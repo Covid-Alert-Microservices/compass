@@ -15,6 +15,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 
@@ -30,9 +31,8 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     testRuntimeOnly 'com.h2database:h2'
 
-    // Redis
-    implementation 'org.springframework.data:spring-data-redis'
-    implementation 'io.lettuce:lettuce-core:6.1.5.RELEASE'
+    // Neo4j
+    implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
 
 }
 

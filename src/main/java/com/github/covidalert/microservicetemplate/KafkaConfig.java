@@ -13,15 +13,16 @@ public class KafkaConfig
 {
 
     @Bean
-    public NewTopic ping()
+    public NewTopic geolocationCreated()
     {
-        return TopicBuilder.name("ping").config(TopicConfig.RETENTION_MS_CONFIG, "1").build();
+        return TopicBuilder.name("geolocation_created").config(TopicConfig.RETENTION_MS_CONFIG, "1").build();
     }
 
     @Bean
-    public NewTopic pong()
+    public NewTopic userPositive()
     {
-        return TopicBuilder.name("pong").config(TopicConfig.RETENTION_MS_CONFIG, "1").build();
+        return TopicBuilder.name("user_positive").config(TopicConfig.RETENTION_MS_CONFIG, "1").build();
     }
+
 
 }

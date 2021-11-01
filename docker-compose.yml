@@ -1,11 +1,19 @@
+version: "3"
 services:
   postgres:
     image: postgres
     environment:
       POSTGRES_PASSWORD: postgres
     ports:
-      - 5432:5432
-  redis:
-    image: redis
+      - "5432:5432"
+    volumes:
+      - ./postgres-geo-db:/var/lib/postgresql/data
+  neo4j:
+    image: neo4j:4.0.3
+    environment:
+      NEO4J_AUTH: neo4j/root
     ports:
-      - 6379:6379
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - ./neo4j/data:/data

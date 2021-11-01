@@ -34,3 +34,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Docker volumes ###
+postgres-geo-db/
+neo4j/
