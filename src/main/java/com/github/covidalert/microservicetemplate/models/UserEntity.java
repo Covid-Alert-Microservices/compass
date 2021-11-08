@@ -11,8 +11,10 @@ import java.util.Set;
 public class UserEntity {
     @Id
     private final String id;
+
     @Relationship(type = "SEE", direction = Relationship.Direction.OUTGOING)
-    private Set<TimestampEntity> timestamps = new HashSet();
+    private final Set<TimestampEntity> timestamps = new HashSet();
+
     public UserEntity(String id) {
         this.id = id;
     }

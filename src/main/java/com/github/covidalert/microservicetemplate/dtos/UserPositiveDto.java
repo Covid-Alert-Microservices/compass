@@ -5,10 +5,15 @@ import javax.validation.constraints.NotNull;
 
 public class UserPositiveDto {
     @NotNull
-    private String userId;
+    private final String userId;
 
     @Min(0)
-    private Long timestamp;
+    private final Long timestamp;
+
+    public UserPositiveDto(String userId, Long timestamp) {
+        this.userId = userId;
+        this.timestamp = timestamp;
+    }
 
     public String getUserId() {
         return userId;

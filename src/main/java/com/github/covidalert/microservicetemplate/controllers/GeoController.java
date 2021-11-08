@@ -20,16 +20,16 @@ public class GeoController
     private GeolocationRepository geolocationRepository;
 
     @Autowired
-    private KafkaTemplate<String, Geolocation> template;
+    private KafkaTemplate<String, Geolocation> geolocationKafkaTemplate;
 
     @PostMapping
     public Geolocation addUserGeolocation(Principal principal, @Valid @RequestBody NewGeolocationDto geolocation )
     {
-        Geolocation document = new Geolocation("ifemogieogi", geolocation.getLatitude(), geolocation.getLongitude(), geolocation.getTimestamp());
+        String userId = "randomId1";
+        if(principal != null && principal.getName().length() > 0) userId = principal.getName();
+        Geolocation document = new Geolocation(userId, geolocation.getLatitude(), geolocation.getLongitude(), geolocation.getTimestamp());
         Geolocation saved =  geolocationRepository.save(document);
-        System.out.println(saved);
-        System.out.println(saved.getClass());
-        template.send("geolocation_created", saved);
+        geolocationKafkaTemplate.send("geolocation_created", document);
         return saved;
     }
 
