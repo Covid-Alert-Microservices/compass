@@ -1,4 +1,4 @@
-package com.github.covidalert.microservicetemplate.dtos;
+package com.github.covidalert.compass.dtos;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;

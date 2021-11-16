@@ -1,6 +1,6 @@
-package com.github.covidalert.microservicetemplate.repositories;
+package com.github.covidalert.compass.repositories;
 
-import com.github.covidalert.microservicetemplate.models.Geolocation;
+import com.github.covidalert.compass.models.Geolocation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

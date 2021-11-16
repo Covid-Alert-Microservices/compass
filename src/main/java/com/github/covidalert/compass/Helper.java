@@ -1,4 +1,4 @@
-package com.github.covidalert.microservicetemplate;
+package com.github.covidalert.compass;
 
 public class Helper {
     /** StackOverflow

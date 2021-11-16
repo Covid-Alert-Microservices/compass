@@ -1,19 +1,16 @@
-package com.github.covidalert.microservicetemplate.listeners;
+package com.github.covidalert.compass.listeners;
 
-import com.github.covidalert.microservicetemplate.Helper;
-import com.github.covidalert.microservicetemplate.dtos.UserPositiveDto;
-import com.github.covidalert.microservicetemplate.models.Geolocation;
-import com.github.covidalert.microservicetemplate.models.UserEntity;
-import com.github.covidalert.microservicetemplate.repositories.GeolocationRepository;
-import com.github.covidalert.microservicetemplate.repositories.GraphRepository;
+import com.github.covidalert.compass.Helper;
+import com.github.covidalert.compass.dtos.UserPositiveDto;
+import com.github.covidalert.compass.models.Geolocation;
+import com.github.covidalert.compass.repositories.GeolocationRepository;
+import com.github.covidalert.compass.repositories.GraphRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Component
 public class GeoListener {

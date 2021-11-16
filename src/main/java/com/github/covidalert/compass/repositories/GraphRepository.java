@@ -1,6 +1,6 @@
-package com.github.covidalert.microservicetemplate.repositories;
+package com.github.covidalert.compass.repositories;
 
-import com.github.covidalert.microservicetemplate.models.UserEntity;
+import com.github.covidalert.compass.models.UserEntity;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.data.repository.query.Param;

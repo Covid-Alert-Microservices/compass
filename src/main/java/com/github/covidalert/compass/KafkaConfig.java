@@ -1,7 +1,7 @@
-package com.github.covidalert.microservicetemplate;
+package com.github.covidalert.compass;
 
-import com.github.covidalert.microservicetemplate.dtos.UserPositiveDto;
-import com.github.covidalert.microservicetemplate.models.Geolocation;
+import com.github.covidalert.compass.dtos.UserPositiveDto;
+import com.github.covidalert.compass.models.Geolocation;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;

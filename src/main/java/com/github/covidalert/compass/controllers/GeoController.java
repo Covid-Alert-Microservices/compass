@@ -1,8 +1,8 @@
-package com.github.covidalert.microservicetemplate.controllers;
+package com.github.covidalert.compass.controllers;
 
-import com.github.covidalert.microservicetemplate.dtos.NewGeolocationDto;
-import com.github.covidalert.microservicetemplate.models.Geolocation;
-import com.github.covidalert.microservicetemplate.repositories.GeolocationRepository;
+import com.github.covidalert.compass.dtos.NewGeolocationDto;
+import com.github.covidalert.compass.models.Geolocation;
+import com.github.covidalert.compass.repositories.GeolocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;

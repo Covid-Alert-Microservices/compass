@@ -1,4 +1,4 @@
-package com.github.covidalert.microservicetemplate.models;
+package com.github.covidalert.compass.models;
 
 import org.springframework.data.neo4j.core.schema.*;
 

@@ -1,7 +1,7 @@
-package com.github.covidalert.microservicetemplate;
+package com.github.covidalert.compass;
 
-import com.github.covidalert.microservicetemplate.repositories.GeolocationRepository;
-import com.github.covidalert.microservicetemplate.repositories.GraphRepository;
+import com.github.covidalert.compass.repositories.GeolocationRepository;
+import com.github.covidalert.compass.repositories.GraphRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -29,7 +29,7 @@ public class WebConfig implements WebMvcConfigurer
         registry.addMapping("/**");
     }
 
-    @Scheduled(cron = "0 0 0 * * *")
+    @Scheduled(cron = "0 0 0 * * *") // each day
     void dailyCleanup(){
         Long timestamp = System.currentTimeMillis() - CLEANUP_TIME_MILLIS;
         try {
