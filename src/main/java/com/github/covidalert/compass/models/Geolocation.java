@@ -65,4 +65,14 @@ public class Geolocation {
         this.timestamp = timestamp;
     }
 
+    @Override
+    public String toString() {
+        return "Geolocation{" +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
