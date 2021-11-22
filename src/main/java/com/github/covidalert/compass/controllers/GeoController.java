@@ -12,7 +12,7 @@ import java.security.Principal;
 
 
 @RestController
-@RequestMapping("/geo")
+@RequestMapping("/api")
 public class GeoController
 {
 
