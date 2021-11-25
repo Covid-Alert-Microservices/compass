@@ -16,6 +16,12 @@ public class NewGeolocationDto {
     @Min(0)
     private Long timestamp;
 
+    public NewGeolocationDto(double latitude, double longitude, Long timestamp) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.timestamp = timestamp;
+    }
+
     public double getLatitude() {
         return latitude;
     }

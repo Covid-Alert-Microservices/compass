@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @DataJpaTest
-class GeolocationRepositoryUnitTest {
+class RepositoryUnitTest {
 
     final String axelId = "axel";
     final String florentId = "florent";

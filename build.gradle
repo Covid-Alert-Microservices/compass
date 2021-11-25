@@ -43,5 +43,6 @@ jar {
 }
 
 test {
+    exclude '**/**/**Controller**'
     useJUnitPlatform()
 }

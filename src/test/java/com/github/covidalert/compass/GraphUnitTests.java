@@ -4,7 +4,7 @@ package com.github.covidalert.compass;
 /*@DataNeo4jTest
 @Transactional(propagation = Propagation.NEVER)
 @Slf4j*/
-public class GraphRepositoryUnitTests {
+public class GraphUnitTests {
     /*
     private static Neo4j embeddedDatabaseServer;
 

@@ -25,7 +25,7 @@ public class GeoController
     @PostMapping
     public Geolocation addUserGeolocation(Principal principal, @Valid @RequestBody NewGeolocationDto geolocation )
     {
-        String userId = "randomId1";
+        String userId = "123-456";
         if(principal != null && principal.getName().length() > 0) userId = principal.getName();
         Geolocation document = new Geolocation(userId, geolocation.getLatitude(), geolocation.getLongitude(), geolocation.getTimestamp());
         Geolocation saved =  geolocationRepository.save(document);
