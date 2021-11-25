@@ -22,6 +22,8 @@ public class NewGeolocationDto {
         this.timestamp = timestamp;
     }
 
+    public NewGeolocationDto() {}
+
     public double getLatitude() {
         return latitude;
     }
