@@ -45,7 +45,7 @@ class RepositoryUnitTest {
     }
 
     @Test
-    public void testPotentialInfectedLocations_noLocationFound() {
+    public void givenOneGeolocation_whenGetPotentialInfectedGeolocations_shouldNotReturnItBecauseTooFar() {
         // given
         Geolocation geolocation = new Geolocation(axelId, latitudeBeach, longitudeBeach, heightOClock);
         entityManager.persist(geolocation);
@@ -59,7 +59,7 @@ class RepositoryUnitTest {
     }
 
     @Test
-    public void testPotentialInfectedLocations_beforeLocation() {
+    public void givenOneGeolocation_whenGetPotentialInfectedGeolocations_shouldNotReturnItBecauseTooEarly() {
         // given
         Geolocation geolocation = new Geolocation(axelId, latitudePolytech, longitudePolytech, heightOClock);
         entityManager.persist(geolocation);
@@ -73,7 +73,7 @@ class RepositoryUnitTest {
     }
 
     @Test
-    public void testPotentialInfectedLocations_oneLocation() {
+    public void givenOneGeolocation_whenGetPotentialInfectedGeolocations_shouldReturnIt() {
         // given
         Geolocation geolocation = new Geolocation(axelId, latitudeBeach, longitudeBeach, heightOClock);
         entityManager.persist(geolocation);
@@ -87,7 +87,7 @@ class RepositoryUnitTest {
     }
 
     @Test
-    public void testPotentialInfectedLocations_someLocation() {
+    public void givenFourGeolocation_whenGetPotentialInfectedGeolocations_shouldReturnThreeOfThemCauseIdIsSame() {
         // given
         Geolocation geolocation1 = new Geolocation(axelId, latitudeBeach, longitudeBeach, heightOClock);
         Geolocation geolocation2 = new Geolocation(florentId, latitudeBeach, longitudeBeach, nineOClock);
@@ -107,7 +107,7 @@ class RepositoryUnitTest {
     }
 
     @Test
-    public void testPotentialInfectedLocations_farLocation() {
+    public void givenTwoGeolocation_whenGetPotentialInfectedGeolocations_shouldReturnOneOfThemCauseOtherOneIsTooFar() {
         // given
         Geolocation geolocation1 = new Geolocation(axelId, latitudePolytech, longitudePolytech, heightOClock);
         Geolocation geolocation2 = new Geolocation(florentId, latitudePolytech + deltaKilometer * 10, longitudePolytech, heightOClock);
@@ -123,13 +123,13 @@ class RepositoryUnitTest {
     }
 
     @Test
-    public void testPotentialInfectedLocations_someComplexLocations() {
+    public void givenFiveGeolocation_whenGetPotentialInfectedGeolocations_shouldReturnThreeOfThemCauseOtherAreTooFarOrTooEarly() {
         // given
-        Geolocation geolocation1 = new Geolocation(axelId, latitudePolytech, longitudePolytech, nineOClock);
-        Geolocation geolocation2 = new Geolocation(florentId, latitudePolytech + deltaKilometer * 10, longitudePolytech, nineOClock);
-        Geolocation geolocation3 = new Geolocation(kevenId, latitudePolytech , longitudePolytech, tenOClock);
-        Geolocation geolocation4 = new Geolocation(florentId, latitudePolytech , longitudePolytech, tenOClock);
-        Geolocation geolocation5 = new Geolocation(kevenId, latitudePolytech , longitudePolytech, heightOClock);
+        Geolocation geolocation1 = new Geolocation(axelId, latitudePolytech, longitudePolytech, nineOClock); //Yes
+        Geolocation geolocation2 = new Geolocation(florentId, latitudePolytech + deltaKilometer * 10, longitudePolytech, nineOClock); //No
+        Geolocation geolocation3 = new Geolocation(kevenId, latitudePolytech , longitudePolytech, tenOClock); //Yes
+        Geolocation geolocation4 = new Geolocation(florentId, latitudePolytech , longitudePolytech, tenOClock); //Yes
+        Geolocation geolocation5 = new Geolocation(kevenId, latitudePolytech , longitudePolytech, heightOClock); //No
         entityManager.persist(geolocation1);
         entityManager.persist(geolocation2);
         entityManager.persist(geolocation3);
@@ -145,7 +145,7 @@ class RepositoryUnitTest {
     }
 
     @Test
-    public void testPotentialInfectedLocations_tonsOfComplexLocations() {
+    public void givenNineGeolocation_whenGetPotentialInfectedGeolocations_shouldReturnFourOfThemCauseOtherAreTooFarOrTooEarly() {
         // given
         Geolocation geolocation1 = new Geolocation(axelId, latitudePolytech + deltaKilometer * 10, longitudePolytech + deltaKilometer * 10, heightOClock); //No
         Geolocation geolocation2 = new Geolocation(axelId, latitudePolytech + deltaMeter, longitudePolytech, nineOClock); //Yes

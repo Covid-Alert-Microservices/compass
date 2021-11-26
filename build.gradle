@@ -20,10 +20,13 @@ dependencies {
     implementation 'org.projectlombok:lombok:1.18.20'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-    testImplementation "org.assertj:assertj-core:3.21.0"
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.4.0'
+    testImplementation 'org.assertj:assertj-core:3.21.0'
+    testImplementation 'org.mockito:mockito-core:2.1.0'
 
     // Keycloak
     implementation 'org.keycloak:keycloak-spring-boot-starter:15.0.2'
+    testImplementation 'com.c4-soft.springaddons:spring-security-oauth2-test-webmvc-addons:3.1.1'
 
     // Kafka
     implementation 'org.springframework.kafka:spring-kafka'
@@ -45,7 +48,6 @@ jar {
 
 
 test {
-    exclude '**/**/**Controller**'
     useJUnitPlatform()
     finalizedBy jacocoTestReport
 }
