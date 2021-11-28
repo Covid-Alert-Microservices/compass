@@ -33,13 +33,13 @@ public class GeoListener {
 
     @KafkaListener(topics = "user_positive", containerFactory = "userKafkaListener")
     public void userPositive(UserPositiveDTO userPositiveDto) {
-        List<String> potentialIds = graphRepository.findPotentials(userPositiveDto.getUserId(), userPositiveDto.getTimestamp() - INCUBATION_TIME_MILLIS);
+        var potentialIds = graphRepository.findPotentials(userPositiveDto.getUserId(), userPositiveDto.getTimestamp() - INCUBATION_TIME_MILLIS);
         this.logger.debug(String.format(
                 "Received new positive user for %s from Kafka topic `user_positive`. %d users potentially infected.",
                 userPositiveDto.getUserId(),
                 potentialIds.size()
         ));
-        for (String id : potentialIds) {
+        for (var id : potentialIds) {
             this.stringKafkaTemplate.send("send_alert", id);
             this.logger.trace(String.format("Sent message on `send_alert` kafka topic for user %s.", id));
         }

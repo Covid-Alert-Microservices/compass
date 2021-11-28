@@ -1,6 +1,7 @@
 package com.github.covidalert.compass.repositories;
 
 import com.github.covidalert.compass.models.UserEntity;
+import org.neo4j.cypherdsl.core.Node;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,7 +14,7 @@ public interface GraphRepository extends Neo4jRepository<UserEntity, String> {
     @Query("MERGE (a:Person {id: $user1}) MERGE (b:Person {id: $user2}) MERGE (a)-[rel:SEE]-(b) ON CREATE SET rel.timestamp = $time ON MATCH SET rel.timestamp = $time")
     void insert(@Param("user1") String user1, @Param("user2") String user2, @Param("time") Long timestamp);
 
-    @Query("MATCH (positive:Person {id: $positiveId})-[rel:SEE]-(potential:Person) WHERE rel.timestamp > $time  RETURN potential")
+    @Query("MATCH (positive:Person {id: $positiveId})-[rel:SEE]-(potential:Person) WHERE rel.timestamp > $time RETURN potential.id")
     List<String> findPotentials(@Param("positiveId") String positiveUserId, @Param("time") Long timestamp);
 
     @Query("MATCH (positive:Person {id: $positiveId})-[rels:SEE*0..]-(potential:Person) WHERE ALL (rel in rels WHERE rel.timestamp > $time) AND contact.id <> $positiveId RETURN DISTINCT potential")
