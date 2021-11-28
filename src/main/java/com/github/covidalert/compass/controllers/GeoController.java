@@ -36,6 +36,9 @@ public class GeoController
         if (principal != null && principal.getName().length() > 0)
         {
             userId = principal.getName();
+        }
+        else
+        {
             this.logger.warn(String.format("New geolocation from unknown user. Falling back to id %s.", userId));
         }
         Geolocation document = new Geolocation(userId, geolocation.getLatitude(), geolocation.getLongitude(), geolocation.getTimestamp());

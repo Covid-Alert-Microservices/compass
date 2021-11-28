@@ -50,7 +50,7 @@ public class GeoListener {
         List<Geolocation> potentialInfectedGeolocations = geolocationRepository.potentialInfectedGeolocations(geolocation.getUserId(), geolocation.getLatitude(), geolocation.getLongitude(), geolocation.getTimestamp() - VIRUS_TIME_MILLIS);
         int insertedCount = 0;
         for (Geolocation geo : potentialInfectedGeolocations) {
-            double distance = Helper.distance(geolocation.getLatitude(), geolocation.getLongitude(), geo.getLatitude(), geo.getLongitude());
+            double distance = Helper.distance(geolocation.getLatitude(), geo.getLatitude(), geolocation.getLongitude(), geo.getLongitude());
             this.logger.trace(String.format(
                     "Geolocation %f/%f (user %s) is %f meters away from %f/%f (user %s). Will insert if %f <= %d",
                     geo.getLatitude(),
