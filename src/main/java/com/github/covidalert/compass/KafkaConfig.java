@@ -1,7 +1,7 @@
 package com.github.covidalert.compass;
 
-import com.github.covidalert.compass.dtos.UserPositiveDto;
 import com.github.covidalert.compass.models.Geolocation;
+import com.github.covidalert.covidtests.dtos.UserPositiveDTO;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -86,16 +86,16 @@ public class KafkaConfig {
     }
 
     @Bean
-    public ConsumerFactory<String, UserPositiveDto> userConsumerFactory() {
+    public ConsumerFactory<String, UserPositiveDTO> userConsumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.GROUP_ID_CONFIG,"covid-alert");
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
-        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(UserPositiveDto.class));
+        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(UserPositiveDTO.class));
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, UserPositiveDto> userKafkaListener() {
-        var factory = new ConcurrentKafkaListenerContainerFactory<String, UserPositiveDto>();
+    public ConcurrentKafkaListenerContainerFactory<String, UserPositiveDTO> userKafkaListener() {
+        var factory = new ConcurrentKafkaListenerContainerFactory<String, UserPositiveDTO>();
         factory.setConsumerFactory(userConsumerFactory());
         return factory;
     }

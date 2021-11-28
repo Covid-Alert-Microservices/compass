@@ -1,10 +1,10 @@
 package com.github.covidalert.compass.listeners;
 
 import com.github.covidalert.compass.Helper;
-import com.github.covidalert.compass.dtos.UserPositiveDto;
 import com.github.covidalert.compass.models.Geolocation;
 import com.github.covidalert.compass.repositories.GeolocationRepository;
 import com.github.covidalert.compass.repositories.GraphRepository;
+import com.github.covidalert.covidtests.dtos.UserPositiveDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -28,7 +28,7 @@ public class GeoListener {
     private KafkaTemplate<String, String> stringKafkaTemplate;
 
     @KafkaListener(topics = "user_positive", containerFactory = "userKafkaListener")
-    public void userPositive(UserPositiveDto userPositiveDto) {
+    public void userPositive(UserPositiveDTO userPositiveDto) {
         List<String> potentialIds = graphRepository.findPotentials(userPositiveDto.getUserId(), userPositiveDto.getTimestamp() - INCUBATION_TIME_MILLIS);
         for (String id : potentialIds) {
             this.stringKafkaTemplate.send("send_alert", id);

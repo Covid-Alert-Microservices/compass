@@ -1,21 +1,21 @@
-package com.github.covidalert.compass.dtos;
+package com.github.covidalert.covidtests.dtos;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-public class UserPositiveDto {
+public class UserPositiveDTO {
     @NotNull
     private String userId;
 
     @Min(0)
     private Long timestamp;
 
-    public UserPositiveDto(String userId, Long timestamp) {
+    public UserPositiveDTO(String userId, Long timestamp) {
         this.userId = userId;
         this.timestamp = timestamp;
     }
 
-    public UserPositiveDto() {}
+    public UserPositiveDTO() {}
 
     public String getUserId() {
         return userId;
